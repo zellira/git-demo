@@ -5,7 +5,6 @@ jQuery(document).ready(function($) {
     var count = 2;
     var total = $("#filter-init").data("number-page");
     var search = jQuery('.page-header-search').data('search');
-
     var tag = jQuery('.page-header-data').data('tag');
     var author = jQuery('.page-header-data').data('author');
     var day = jQuery('#filter-init').data('day');
@@ -14,7 +13,6 @@ jQuery(document).ready(function($) {
 
     function zellira_filter(pageNumber, typeFilter, el) {
         /***********Si l'utilisateur utilise la bar de filtre***********/
-
         if(typeFilter == "filter"){
             $("html, body").animate({
                 scrollTop: 0
@@ -36,7 +34,6 @@ jQuery(document).ready(function($) {
             /******Je remet le nombre de page au point de depart***********/
             count = 2;
         }
-
         /****Value data bar filter*/
         var data_sort = jQuery('.filter-order a.active').data('post-type');
         var type_post = jQuery('.filter-type a.active').data('post-type');
@@ -68,12 +65,10 @@ jQuery(document).ready(function($) {
                 withCredentials: true
             },
             success: function (html) {
-
                 if (html.length > 0) {
                     Pace.restart();
                 var $container = $('.main.mason');
                 var $newElems = jQuery(html);
-
                 /************Si l'utilisateur utilise la bar de filtre*****************/
                 if (typeFilter == "filter") {
 
@@ -116,7 +111,6 @@ jQuery(document).ready(function($) {
                             }, 5 + ( i * 50));
                         });
                     });
-
                 }
             }
             },
@@ -139,7 +133,6 @@ jQuery(document).ready(function($) {
     }
 // add/delete les informations de la barre de filtre enregistr� (function userfiltre())
     $('#filter-selected p').click(function () {
-
         var filter_id = $(this).attr('id');
         var filter_control = $('#filter-control .' + filter_id);
         filter_control.find('li a.active').removeClass('active');
@@ -156,7 +149,6 @@ jQuery(document).ready(function($) {
     $('.sort li').click(function () {
         zellira_filter("", "filter", this);
     });
-
     jQuery(window).scroll(function () {
         if (jQuery(window).scrollTop() == jQuery(document).height() - jQuery(window).height() ) {
             if (count > total) {
